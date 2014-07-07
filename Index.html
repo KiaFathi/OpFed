@@ -24,9 +24,9 @@
         <button ng-click="vote('dislike')">Dislike</button>
         <button ng-click="vote('hate')">Hate</button>
 
-        <button ng-click"showComments()">Show Comments</button>
+
         
-        <div  ng-if="topic.showComments" ng-repeat="comment in topic.comments">
+        <div ng-repeat="comment in topic.comments">
           <p>{{comment}}</p>
         </div>
       </div>
