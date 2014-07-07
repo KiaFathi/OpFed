@@ -3,16 +3,35 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
+    <title>OpFed</title>
   </head>
   
-  <body ng-controller="MyController">
-    <div id="messagesDiv">
-      <div ng-repeat="msg in messages"><em>{{msg.from}}</em>: {{msg.body}}</div>
-    </div>
-    <input type="text" ng-model="name" placeholder="Name">
-    <input type="text" ng-model="msg" ng-keydown="addMessage($event)" placeholder="Message...">
-    
+  <body ng-controller="TopicController">
     <script src='./app/app.js'></script>
+    
+    <h1>OpFed</h1>
+
+    <input type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic">
+
+    <div id="messagesDiv">
+      <div ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
+        <p><strong>{{topic.title}}</strong><p>
+        <p><em>Votes {{topic.votes}}</em><p>
+        <p>Love: {{topic.love}} || Like: {{topic.like}} || Dislike: {{topic.dislike}} || Hate: {{topic.hate}}</p>
+
+        <button ng-click="vote('love')">Love</button>
+        <button ng-click="vote('like')">Like</button>
+        <button ng-click="vote('dislike')">Dislike</button>
+        <button ng-click="vote('hate')">Hate</button>
+
+        <button ng-click"showComments()">Show Comments</button>
+        
+        <div  ng-if="topic.showComments" ng-repeat="comment in topic.comments">
+          <p>{{comment}}</p>
+        </div>
+      </div>
+    </div>
+
   
   </body>
 </html>
