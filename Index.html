@@ -34,9 +34,7 @@
             <td><button ng-click="vote('hate')">Hate</button></td>
           </tr>
         </table>
-
-        <a ng-show='!!topic.comments' href='' ng-click="isComments = !isComments">Show Comments</a>
-        <div ng-show="isComments" ng-repeat="comment in topic.comments">
+        <div ng-repeat="comment in topic.comments">
           <p>{{comment}}</p>
         </div>
       </div>

@@ -17,6 +17,7 @@
           hate: 0,
           votes: 0,
           comments: {},
+          showComments: false
         })
         $scope.title ='';
       };
@@ -25,12 +26,14 @@
         this.topic[sentiment]++;
         this.topic.votes++;
         var comment = prompt("Write a comment");
+        var currentVotes = this.topic.votes;
+        console.log(currentVotes);
         if(comment){
           if(this.topic.comments){
-            this.topic.comments[comment] = sentiment + ": "+comment;
+            this.topic.comments[currentVotes] = sentiment + ": "+comment;
           } else {
             var obj = {};
-            obj[comment] = sentiment + ": " + comment;
+            obj[currentVotes] = sentiment + ": " + comment;
             this.topic.comments = obj;
           }
         }
