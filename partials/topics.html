@@ -1,11 +1,12 @@
 <div ng-controller="topicsController">
-  <h3>Enter A Topic: <h3>
-  <input class='topicAdd' type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></input>
-
-  <div class="topicEntry" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
+  <div class='col-md-12'>
+    <h3 class='col-md-122'>Enter A Topic: <h3>
+    <textarea class='topicAdd col-md-12' type="form" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></textarea>
+  </div>
+  <div class="topicEntry col-md-12" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
     <h3 class='topicTitle'><strong>{{topic.title}}</strong></h3>
       <p>(Votes {{topic.votes}})<p>
-    <table>
+    <table class='table table-hover'>
       <tr>
         <td><img src='./assets/love.png'>{{topic.love}}</td>
         <td><img src='./assets/like.png'>{{topic.like}}</td>
@@ -19,8 +20,11 @@
         <td><button ng-click="vote('hate')">Hate</button></td>
       </tr>
     </table>
-    <div ng-repeat="comment in topic.comments track by $index">
-      <p>{{comment}}</p>
+    <div>
+      <h5>Comments:</h5>
+      <div ng-repeat="comment in topic.comments track by $index">
+        <p>{{comment}}</p>
+      </div>
     </div>
   </div>
 </div>

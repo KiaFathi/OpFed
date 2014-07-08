@@ -1,21 +1,8 @@
 .topicEntry {
-   border: 1px solid black;
-   border-radius: 5;
-   padding-top: 0px;
-   padding-left: 10px;
-   width: 300px;
-   height:300px;
-   float:left;
-   overflow:auto;
-   clear:both;
 }
 
 .topicTitle {
-  text-decoration: underline
 }
 
 .topicAdd {
-  padding-left: 10px;
-  float:left;
-  width:310px;
 }

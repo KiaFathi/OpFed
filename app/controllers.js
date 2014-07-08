@@ -9,7 +9,6 @@ angular.module('OpFed.controllers', [])
         $location.path('/login');
       } else{
         $scope.user = users.loginObj.user.username;
-        console.log($scope.user);
       }
 
       $scope.addTopic = function(e) {
