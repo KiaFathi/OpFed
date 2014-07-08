@@ -16,16 +16,26 @@
     <div id="messagesDiv">
       <div ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
         <p><strong>{{topic.title}}</strong><p>
-        <p><em>Votes {{topic.votes}}</em><p>
-        <p>Love: {{topic.love}} || Like: {{topic.like}} || Dislike: {{topic.dislike}} || Hate: {{topic.hate}}</p>
-
-        <button ng-click="vote('love')">Love</button>
-        <button ng-click="vote('like')">Like</button>
-        <button ng-click="vote('dislike')">Dislike</button>
-        <button ng-click="vote('hate')">Hate</button>
-
-
-        
+        <table><em>
+          <Caption>Votes: {{topic.votes}}</em></Caption>
+          <tr>
+            <td><img src='./assets/love.png'>Love: {{topic.love}}</td>
+            <td><button ng-click="vote('love')">Love</button></td>
+          </tr>
+          <tr>
+            <td><img src='./assets/like.png'>Like: {{topic.like}}</td>
+            <td><button ng-click="vote('like')">Like</button></td>
+          </tr>
+          <tr>
+            <td><img src='./assets/dislike.png'>Dislike: {{topic.dislike}}</td>
+            <td><button ng-click="vote('dislike')">Dislike</button></td>
+          </tr>
+          <tr>
+            <td><img src='./assets/hate.png'>Hate: {{topic.hate}}
+            </td>
+            <td><button ng-click="vote('hate')">Hate</button></td>
+          </tr>
+        </table> 
         <div ng-repeat="comment in topic.comments">
           <p>{{comment}}</p>
         </div>
