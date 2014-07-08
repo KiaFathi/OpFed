@@ -14,7 +14,7 @@ angular.module('OpFed.controllers', [])
 
       $scope.addTopic = function(e) {
         if (e.keyCode != 13) return;
-        database.$add({
+        this.topics.$add({
           title: $scope.title,
           love: 0,
           like: 0,
