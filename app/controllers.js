@@ -2,8 +2,8 @@ angular.module('OpFed.controllers', [])
 .controller('topicsController', ['$scope', 'database', 'users', '$location',
  function($scope, database, users, $location) {
      
-      $scope.topics = database;
-      // database.$bind($scope, "topics");
+    console.log(database);
+    $scope.topics = database;
 
       if(!users.loginObj.user){
         $location.path('/login');
@@ -14,7 +14,7 @@ angular.module('OpFed.controllers', [])
 
       $scope.addTopic = function(e) {
         if (e.keyCode != 13) return;
-        this.topics.$add({
+        database.$add({
           title: $scope.title,
           love: 0,
           like: 0,
@@ -28,10 +28,10 @@ angular.module('OpFed.controllers', [])
       };
 
       $scope.vote = function(sentiment){
+        console.log(this.topic.$id);
         this.topic[sentiment]++;
         this.topic.votes++;
         var comment = prompt("Write a comment");
-        var currentVotes = this.topic.votes;
         if(comment){
           if(this.topic.comments){
             this.topic.comments[this.user] = this.user + ": "+comment;
@@ -41,6 +41,7 @@ angular.module('OpFed.controllers', [])
             this.topic.comments = obj;
           }
         }
+        database.$save(this.topic.$id);
       };
     }
 ]).controller('loginController', ["$scope", "$firebaseSimpleLogin", 'users', '$location',
