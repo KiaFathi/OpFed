@@ -17,6 +17,6 @@ angular.module('OpFed', [
         controller: "topicsController"
       })
       .otherwise({
-        redirectTo: '/topics'
+        redirectTo: '/login'
       });
   }]);
