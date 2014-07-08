@@ -1,19 +1,22 @@
-.topicEntry {
-}
-
-.topicTitle {
-}
-
-.topicAdd {
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Corben', Georgia, Times, serif;
+    text-shadow: 1px 1px 1px #ccc;
+    color: rgb(85,98,112);
 }
+
+h3 {
+  color: rgb(196,77,88);
+}
+
+h4 {
+  color: rgb(78,195,226);
+}
+
 p, div {
     font-family: 'Nobile', Helvetica, Arial, sans-serif;
+    color: rgb(196,77,88);
 }
 
 body { 
-    background: url(/img/cream_dust.png) repeat 0 0;
+    background: url(../assets/cream_dust.png);
 }

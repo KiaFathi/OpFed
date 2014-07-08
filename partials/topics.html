@@ -1,7 +1,7 @@
 <div ng-controller="topicsController">
   <div class='col-md-12'>
     <h3 class='col-md-122'>Enter A Topic: <h3>
-    <textarea class='topicAdd col-md-12' type="form" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></textarea>
+    <textarea class='topicAdd col-md-12 form-control' type="form" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></textarea>
   </div>
   <div class="topicEntry col-md-12" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
     <h3 class='topicTitle'><strong>{{topic.title}}</strong>   <small>(Votes: {{topic.votes}})<small></h3>
@@ -14,10 +14,10 @@
         <td><img src='./assets/hate.png'>{{topic.hate}}</td>
       </tr>
       <tr>
-        <td><button ng-click="vote('love')">Love</button></td>
-        <td><button ng-click="vote('like')">Like</button></td>
-        <td><button ng-click="vote('dislike')">Dislike</button></td>
-        <td><button ng-click="vote('hate')">Hate</button></td>
+        <td><button class ='btn' ng-click="vote('love')">Love</button></td>
+        <td><button class ='btn' ng-click="vote('like')">Like</button></td>
+        <td><button class ='btn' ng-click="vote('dislike')">Dislike</button></td>
+        <td><button class ='btn' ng-click="vote('hate')">Hate</button></td>
       </tr>
     </table>
       <div class='container-fluid' ng-if="topic.comments">
