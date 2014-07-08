@@ -2,11 +2,13 @@ angular.module('OpFed.controllers', [])
 .controller('topicsController', ['$scope', 'database', 'users', '$location',
  function($scope, database, users, $location) {
       database.$bind($scope, "topics");
+
       if(!users.loginObj.user){
         $location.path('/login');
+      } else{
+        $scope.user = users.loginObj.user.username;
+        console.log($scope.user);
       }
-      $scope.user = users.loginObj.user.username;
-      console.log($scope.user);
 
       $scope.addTopic = function(e) {
         if (e.keyCode != 13) return;
