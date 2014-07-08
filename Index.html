@@ -1,18 +1,17 @@
-<html ng-app="opFed">
-  <head>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
+<html>
+<head>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.js'></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
     <script type='text/javascript'
         src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'>
     </script>
     <link rel="stylesheet" type="text/css" href="./style/style.css">
-    <title>OpFed</title>
-  </head>
-  
-  <body>
-    <script src='./app/app.js'></script>
-    <div ng-controller="TopicController">
+  <title>OpFed Test</title>
+</head>
+
+<body ng-app="OpFed" ng-controller="topicsController">
+  <div>
       <h1>OpFed</h1>
       <h3>Enter A Topic: <h3>
       <input class='topicAdd' type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></input>
@@ -38,8 +37,11 @@
           <p>{{comment}}</p>
         </div>
       </div>
-  </div>
+      <script src="./app/app-test.js"></script>
+      <script src="./app/controllers.js"></script>
+      <script src="./app/services.js"></script>
+</body>
 
-  
-  </body>
+
+
 </html>
