@@ -23,6 +23,8 @@ angular.module('OpFed.controllers', [])
           votes: 0,
           comments: {},
           showComments: false
+        }).then(function(id){
+          database.$save(id.name());
         })
         $scope.title ='';
       };
