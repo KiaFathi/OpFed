@@ -4,12 +4,12 @@
     return $firebase(ref);
   }])
   .controller("TopicController", ["$scope", "database",
-    function($scope, service) {
-      service.$bind($scope, "topics");
+    function($scope, database) {
+      database.$bind($scope, "topics");
 
       $scope.addTopic = function(e) {
         if (e.keyCode != 13) return;
-        service.$add({
+        database.$add({
           title: $scope.title,
           love: 0,
           like: 0,
