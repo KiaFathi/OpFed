@@ -4,8 +4,8 @@
     <textarea class='topicAdd col-md-12' type="form" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></textarea>
   </div>
   <div class="topicEntry col-md-12" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
-    <h3 class='topicTitle'><strong>{{topic.title}}</strong></h3>
-      <p>(Votes {{topic.votes}})<p>
+    <h3 class='topicTitle'><strong>{{topic.title}}</strong>   <small>(Votes: {{topic.votes}})<small></h3>
+
     <table class='table table-hover'>
       <tr>
         <td><img src='./assets/love.png'>{{topic.love}}</td>
@@ -20,10 +20,10 @@
         <td><button ng-click="vote('hate')">Hate</button></td>
       </tr>
     </table>
-    <div>
-      <h5>Comments:</h5>
-      <div ng-repeat="comment in topic.comments track by $index">
-        <p>{{comment}}</p>
+      <div class='container-fluid' ng-if="topic.comments">
+        <h4>Comments about <em>{{topic.title}}</em>:</h4>
+        <div ng-repeat="comment in topic.comments track by $index">
+        <h5>{{comment}}</h5>
       </div>
     </div>
   </div>
