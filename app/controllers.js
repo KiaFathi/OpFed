@@ -29,7 +29,7 @@ angular.module('OpFed.controllers', [])
 
       $scope.vote = function(sentiment){
         console.log(this.topic.$id);
-        if(!this.topic.comments[this.user]){
+        if(!this.topic[this.user]){
           this.topic[sentiment]++;
           this.topic.votes++;
         } else{
@@ -40,10 +40,12 @@ angular.module('OpFed.controllers', [])
         if(comment){
           if(this.topic.comments){
             this.topic.comments[this.user] = this.user + ": "+comment;
+            this.topic[this.user] = true;
           } else {
             var obj = {};
             obj[this.user] = this.user + ": " + comment;
             this.topic.comments = obj;
+            this.topic[this.user] = true;
           }
         }
         database.$save(this.topic.$id);
