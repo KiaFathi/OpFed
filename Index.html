@@ -34,7 +34,7 @@
             <td><button ng-click="vote('hate')">Hate</button></td>
           </tr>
         </table>
-        <div ng-repeat="comment in topic.comments">
+        <div ng-repeat="comment in topic.comments track by $index">
           <p>{{comment}}</p>
         </div>
       </div>
