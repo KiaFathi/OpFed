@@ -1,4 +1,4 @@
-  var app = angular.module("myapp", ["firebase"])
+  var app = angular.module("opFed", ["firebase"])
   .factory("database", ["$firebase", function($firebase) {
     var ref = new Firebase("https://OpFed.firebaseio.com/topics");
     return $firebase(ref);
@@ -27,7 +27,6 @@
         this.topic.votes++;
         var comment = prompt("Write a comment");
         var currentVotes = this.topic.votes;
-        console.log(currentVotes);
         if(comment){
           if(this.topic.comments){
             this.topic.comments[currentVotes] = sentiment + ": "+comment;
