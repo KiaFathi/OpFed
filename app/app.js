@@ -1,6 +1,8 @@
 var app = angular.module("myapp", ["firebase"])
   .factory("database", ["$firebase", function($firebase) {
     var ref = new Firebase("https://OpFed.firebaseio.com/topics");
+    var auth = new FirebaseSimpleLogin(ref, function(error, user) {
+    });
     return $firebase(ref);
   }])
   .controller("TopicController", ["$scope", "database",
@@ -34,9 +36,5 @@ var app = angular.module("myapp", ["firebase"])
        }
       };
 
-
-      $scope.sayHi = function(){
-        alert('Hi!');
-      };
     }
   ]);

@@ -3,6 +3,9 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
+    <script type='text/javascript'
+        src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'>
+    </script>
     <link rel="stylesheet" type="text/css" href="./style/style.css">
     <title>OpFed</title>
   </head>
@@ -12,7 +15,7 @@
     <div ng-controller="TopicController">
       <h1>OpFed</h1>
       <h3>Enter A Topic: <h3>
-      <input type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic">
+      <input class='topicAdd' type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></input>
 
       <div class="topicEntry" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
         <h3 class='topicTitle'><strong>{{topic.title}}</strong></h3>

@@ -3,11 +3,16 @@
    border-radius: 5;
    padding-top: 0px;
    padding-left: 10px;
-   width: 25%;
-   height:40%;
+   width: 300px;
+   height:300px;
    float:left;
 }
 
 .topicTitle {
   text-decoration: underline
+}
+
+.topicAdd {
+  float:left;
+  width:100%;
 }
