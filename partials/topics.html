@@ -21,7 +21,7 @@
       </tr>
     </table>
       <div class='container-fluid' ng-if="topic.comments">
-        <h4>Comments about <em>{{topic.title}}</em>:</h4>
+        <h4><u>Comments about <em>{{topic.title}}</em>:</u></h4>
         <div ng-repeat="comment in topic.comments track by $index">
         <h5>{{comment}}</h5>
       </div>

@@ -2,7 +2,6 @@ angular.module('OpFed.controllers', [])
 .controller('topicsController', ['$scope', 'database', 'users', '$location',
  function($scope, database, users, $location) {
      
-    console.log(database);
     $scope.topics = database;
 
       if(!users.loginObj.user){
@@ -29,7 +28,6 @@ angular.module('OpFed.controllers', [])
       };
 
       $scope.vote = function(sentiment){
-        console.log(this.topic.$id);
         if(!this.topic[this.user]){
           this.topic[sentiment]++;
           this.topic.votes++;
@@ -64,13 +62,6 @@ angular.module('OpFed.controllers', [])
     $scope.logout = function(){
       users.logout();
     };
-
-    $scope.logger = function(){
-      if(users.loginObj.user){
-        console.log(users.loginObj.user.username);
-      } else{
-        console.log("Not logged in");
-      }
-    };
+    
   }
 ]);
