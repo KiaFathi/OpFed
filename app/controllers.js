@@ -29,8 +29,13 @@ angular.module('OpFed.controllers', [])
 
       $scope.vote = function(sentiment){
         console.log(this.topic.$id);
-        this.topic[sentiment]++;
-        this.topic.votes++;
+        if(!this.topic.comments[this.user]){
+          this.topic[sentiment]++;
+          this.topic.votes++;
+        } else{
+          alert("You already voted!");
+          return;
+        }
         var comment = prompt("Write a comment");
         if(comment){
           if(this.topic.comments){
