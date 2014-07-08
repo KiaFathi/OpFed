@@ -3,44 +3,41 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
     <title>OpFed</title>
   </head>
   
-  <body ng-controller="TopicController">
+  <body>
     <script src='./app/app.js'></script>
-    
-    <h1>OpFed</h1>
+    <div ng-controller="TopicController">
+      <h1>OpFed</h1>
+      <h3>Enter A Topic: <h3>
+      <input type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic">
 
-    <input type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic">
-
-    <div id="messagesDiv">
-      <div ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
-        <p><strong>{{topic.title}}</strong><p>
-        <table><em>
-          <Caption>Votes: {{topic.votes}}</em></Caption>
+      <div class="topicEntry" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
+        <h3 class='topicTitle'><strong>{{topic.title}}</strong></h3>
+          <p>(Votes {{topic.votes}})<p>
+        <table>
           <tr>
-            <td><img src='./assets/love.png'>Love: {{topic.love}}</td>
+            <td><img src='./assets/love.png'>{{topic.love}}</td>
+            <td><img src='./assets/like.png'>{{topic.like}}</td>
+            <td><img src='./assets/dislike.png'>{{topic.dislike}}</td>
+            <td><img src='./assets/hate.png'>{{topic.hate}}</td>
+          </tr>
+          <tr>
             <td><button ng-click="vote('love')">Love</button></td>
-          </tr>
-          <tr>
-            <td><img src='./assets/like.png'>Like: {{topic.like}}</td>
             <td><button ng-click="vote('like')">Like</button></td>
-          </tr>
-          <tr>
-            <td><img src='./assets/dislike.png'>Dislike: {{topic.dislike}}</td>
             <td><button ng-click="vote('dislike')">Dislike</button></td>
-          </tr>
-          <tr>
-            <td><img src='./assets/hate.png'>Hate: {{topic.hate}}
-            </td>
             <td><button ng-click="vote('hate')">Hate</button></td>
           </tr>
-        </table> 
-        <div ng-repeat="comment in topic.comments">
+        </table>
+
+        <a ng-show='!!topic.comments' href='' ng-click="isComments = !isComments">Show Comments</a>
+        <div ng-show="isComments" ng-repeat="comment in topic.comments">
           <p>{{comment}}</p>
         </div>
       </div>
-    </div>
+  </div>
 
   
   </body>

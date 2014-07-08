@@ -1,0 +1,13 @@
+.topicEntry {
+   border: 1px solid black;
+   border-radius: 5;
+   padding-top: 0px;
+   padding-left: 10px;
+   width: 25%;
+   height:40%;
+   float:left;
+}
+
+.topicTitle {
+  text-decoration: underline
+}
