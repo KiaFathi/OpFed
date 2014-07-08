@@ -1,0 +1,26 @@
+<div ng-controller="topicsController">
+  <h3>Enter A Topic: <h3>
+  <input class='topicAdd' type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></input>
+
+  <div class="topicEntry" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
+    <h3 class='topicTitle'><strong>{{topic.title}}</strong></h3>
+      <p>(Votes {{topic.votes}})<p>
+    <table>
+      <tr>
+        <td><img src='./assets/love.png'>{{topic.love}}</td>
+        <td><img src='./assets/like.png'>{{topic.like}}</td>
+        <td><img src='./assets/dislike.png'>{{topic.dislike}}</td>
+        <td><img src='./assets/hate.png'>{{topic.hate}}</td>
+      </tr>
+      <tr>
+        <td><button ng-click="vote('love')">Love</button></td>
+        <td><button ng-click="vote('like')">Like</button></td>
+        <td><button ng-click="vote('dislike')">Dislike</button></td>
+        <td><button ng-click="vote('hate')">Hate</button></td>
+      </tr>
+    </table>
+    <div ng-repeat="comment in topic.comments track by $index">
+      <p>{{comment}}</p>
+    </div>
+  </div>
+</div>

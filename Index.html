@@ -1,45 +1,20 @@
 <html>
 <head>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.js'></script>
-    <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
-    <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
-    <script type='text/javascript'
-        src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'>
-    </script>
+  <script src='./bower_components/angular/angular.js'></script>
+    <script src='./bower_components/firebase/firebase.js'></script>
+    <script src='./bower_components/angularfire/angularfire.js'></script>
+    <script src='./bower_components/firebase-simple-login/firebase-simple-login.js'></script>
+    <script src='./bower_components/angular-route/angular-route.js'></script>
     <link rel="stylesheet" type="text/css" href="./style/style.css">
   <title>OpFed Test</title>
 </head>
 
-<body ng-app="OpFed" ng-controller="topicsController">
-  <div>
-      <h1>OpFed</h1>
-      <h3>Enter A Topic: <h3>
-      <input class='topicAdd' type="text" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></input>
-
-      <div class="topicEntry" ng-repeat="topic in topics| orderByPriority| orderBy: 'votes':!reverse">
-        <h3 class='topicTitle'><strong>{{topic.title}}</strong></h3>
-          <p>(Votes {{topic.votes}})<p>
-        <table>
-          <tr>
-            <td><img src='./assets/love.png'>{{topic.love}}</td>
-            <td><img src='./assets/like.png'>{{topic.like}}</td>
-            <td><img src='./assets/dislike.png'>{{topic.dislike}}</td>
-            <td><img src='./assets/hate.png'>{{topic.hate}}</td>
-          </tr>
-          <tr>
-            <td><button ng-click="vote('love')">Love</button></td>
-            <td><button ng-click="vote('like')">Like</button></td>
-            <td><button ng-click="vote('dislike')">Dislike</button></td>
-            <td><button ng-click="vote('hate')">Hate</button></td>
-          </tr>
-        </table>
-        <div ng-repeat="comment in topic.comments track by $index">
-          <p>{{comment}}</p>
-        </div>
-      </div>
-      <script src="./app/app.js"></script>
-      <script src="./app/controllers.js"></script>
-      <script src="./app/services.js"></script>
+<body ng-app="OpFed">
+  <h1>OpFed</h1>
+  <ng-view></ng-view>
+  <script src="./app/app.js"></script>
+  <script src="./app/controllers.js"></script>
+  <script src="./app/services.js"></script>
 </body>
 
 
