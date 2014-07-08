@@ -1,7 +1,9 @@
 angular.module('OpFed.controllers', [])
 .controller('topicsController', ['$scope', 'database', 'users', '$location',
  function($scope, database, users, $location) {
-      database.$bind($scope, "topics");
+     
+      $scope.topics = database;
+      // database.$bind($scope, "topics");
 
       if(!users.loginObj.user){
         $location.path('/login');
