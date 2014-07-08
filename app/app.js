@@ -6,6 +6,24 @@ angular.module('OpFed', [
     var ref = new Firebase("https://OpFed.firebaseio.com/topics");
     return $firebase(ref);
   }])
+  .factory('users', ["$firebaseSimpleLogin", function($firebaseSimpleLogin){
+    var dataRef = new Firebase("https://opfed.firebaseio.com/users");
+
+    var user =
+        {
+         loginObj : $firebaseSimpleLogin(dataRef)
+        };
+
+    return {
+        loginObj : $firebaseSimpleLogin(dataRef),
+        getUser: function () {
+            return user.loginObj;
+        },
+        logout : function(){
+          user.loginObj.$logout();
+        }
+    } 
+  }])
   .config(['$routeProvider', function($routeProvider){
     $routeProvider
       .when("/login", {

@@ -1,6 +1,12 @@
 angular.module('OpFed.controllers', [])
-.controller('topicsController', ['$scope', 'database', function($scope, database) {
+.controller('topicsController', ['$scope', 'database', 'users', '$location',
+ function($scope, database, users, $location) {
       database.$bind($scope, "topics");
+      if(!users.loginObj.user){
+        $location.path('/login');
+      }
+      $scope.user = users.loginObj.user.username;
+      console.log($scope.user);
 
       $scope.addTopic = function(e) {
         if (e.keyCode != 13) return;
@@ -24,14 +30,34 @@ angular.module('OpFed.controllers', [])
         var currentVotes = this.topic.votes;
         if(comment){
           if(this.topic.comments){
-            this.topic.comments[currentVotes] = sentiment + ": "+comment;
+            this.topic.comments[this.user] = this.user + ": "+comment;
           } else {
             var obj = {};
-            obj[currentVotes] = sentiment + ": " + comment;
+            obj[this.user] = this.user + ": " + comment;
             this.topic.comments = obj;
           }
         }
       };
     }
-])
+]).controller('loginController', ["$scope", "$firebaseSimpleLogin", 'users', '$location',
+  function($scope, $firebaseSimpleLogin, users, $location) {
 
+    $scope.login = function(){
+      users.loginObj.$login('GitHub').then(function(){
+        $location.path('/topics');
+      });
+    };
+
+    $scope.logout = function(){
+      users.logout();
+    };
+
+    $scope.logger = function(){
+      if(users.loginObj.user){
+        console.log(users.loginObj.user.username);
+      } else{
+        console.log("Not logged in");
+      }
+    };
+  }
+]);
