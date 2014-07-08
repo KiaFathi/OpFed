@@ -26,13 +26,15 @@ var app = angular.module("myapp", ["firebase"])
       $scope.vote = function(sentiment){
        this.topic[sentiment]++;
        this.topic.votes++;
-       var comment = prompt("Do you have a comment?");
-       if(this.topic.comments){
-         this.topic.comments[this.topic.votes] = sentiment + ": "+comment;
-       } else {
-        var obj = {};
-        obj[this.topic.votes] = sentiment + ": " + comment;
-        this.topic.comments = obj;
+       var comment = prompt("Leave a comment?");
+       if(comment){
+         if(this.topic.comments){
+           this.topic.comments[this.topic.votes] = sentiment + ": "+comment;
+         } else {
+          var obj = {};
+          obj[this.topic.votes] = sentiment + ": " + comment;
+          this.topic.comments = obj;
+         }        
        }
       };
 
