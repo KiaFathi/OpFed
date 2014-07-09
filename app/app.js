@@ -34,6 +34,10 @@ angular.module('OpFed', [
         templateUrl: "./partials/topics.html",
         controller: "topicsController"
       })
+      .when("/pdf", {
+        templateUrl: "./partials/pdf.html",
+        controller: "pdfController"
+      })
       .otherwise({
         redirectTo: '/login'
       });

@@ -65,6 +65,8 @@ angular.module('OpFed.controllers', [])
           'width': 170, 
           'elementHandlers': specialElementHandlers
          });
+         console.log(doc);
+         doc.save('results.pdf')
       };
     }
 ]).controller('loginController', ["$scope", "$firebaseSimpleLogin", 'users', '$location',
@@ -80,4 +82,25 @@ angular.module('OpFed.controllers', [])
       users.logout();
     };
   }
-]);
+]).controller('pdfController', ['$scope', function($scope){
+  console.log('We have a pdf controller');
+  $scope.pdfData = function(){
+     var doc = new jsPDF();
+
+     // We'll make our own renderer to skip this editor
+     var specialElementHandlers = {
+      '#editor': function(element, renderer){
+        return true;
+      }
+     };
+
+     // All units are in the set measurement for the document
+     // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
+     doc.fromHTML($('body').get(0), 15, 15, {
+      'width': 170, 
+      'elementHandlers': specialElementHandlers
+     });
+     console.log(doc);
+     doc.save('results.pdf')
+  };
+}])
