@@ -1,4 +1,5 @@
 <div ng-controller="topicsController">
+  <button ng-click='pdfData()'>PDF this Page</button>
   <div class='col-md-12'>
     <h3 class='col-md-122'>Enter A Topic: <h3>
     <textarea class='topicAdd col-md-12 form-control' type="form" ng-model="title" ng-keydown="addTopic($event)" placeholder="New Topic"></textarea>

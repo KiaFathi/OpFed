@@ -19,6 +19,8 @@
     "angular": "~1.2.19",
     "angular-route": "~1.2.19",
     "angularfire": "~0.7.1",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "jspdf": "~1.0.178",
+    "jquery": "~2.1.1"
   }
 }
